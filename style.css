@@ -1,0 +1,27 @@
+#modal {
+    text-align: center ;
+    padding: 2em;
+    border: 1px solid rgb(54, 54, 54, 0.2);
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(54, 54, 54, 0.2);
+    z-index: 10;
+}
+#start-button {
+    font-size: large;
+}
+#cat {
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#cat:hover {
+    cursor: pointer;
+}
+body { 
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
