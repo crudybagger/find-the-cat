@@ -26,8 +26,8 @@ const scale = (t) => {
 
 const cat = document.createElement('div');
 cat.id = 'cat';
-cat.style.width = '50px';
-cat.style.height = '50px';
+cat.style.width = '75px';
+cat.style.height = '75px';
 cat.style.position = 'absolute';
 cat.style.top = 0;
 cat.style.left = 0;
@@ -38,8 +38,8 @@ const intersects = (rect1, rect2) => {
 }
 
 const generateRandomPosition = () => {
-    cat.style.top = Math.random() * (window.innerHeight - 50);
-    cat.style.left = Math.random() * (window.innerWidth - 50);
+    cat.style.top = Math.random() * (window.innerHeight - 75);
+    cat.style.left = Math.random() * (window.innerWidth - 75);
     while(intersects(cat.getBoundingClientRect(), modalBoundingRect)) {
         generateRandomPosition();
     }
@@ -51,14 +51,12 @@ document.addEventListener('mousemove', (event) => {
     const y = event.clientY;
     var val = scale(distance(x, y, cat));
     audio.volume = val;
+    audio.playbackRate = val*10;
 })
 
-cat.addEventListener('click', async () => {
-    audio.pause();
-    audio.currentTime = 0;
-    audio.loop = false;
-    audio.playbackRate = 1;
-    await audio.play();
+cat.addEventListener('click', () => {
+    audio.pause()
+    new Audio('cat-meow.mp3').play();
     modal.style.display = 'block';
     cat.style.backgroundImage = "url('cat.png')";
 })
@@ -67,7 +65,7 @@ startButton.addEventListener('click', () => {
     cat.style.backgroundColor = '#f2f2f2';
     cat.style.backgroundImage = 'none'
     
-    cat.style.backgroundColor = 'red';
+    // cat.style.backgroundColor = 'red';
     generateRandomPosition();
     audio.loop = true;
     audio.currentTime = 0;
